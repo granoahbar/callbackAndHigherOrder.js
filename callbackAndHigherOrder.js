@@ -6,19 +6,32 @@
 */
 
 // CODE HERE
-const multiply = (num1, num2) => num1 * num2
-const calculate = (num1, num2, callbackName) => callbackName (num1, num2)
+const multiply = (num1, num2, cb) => {
+  cb(num1 * num2)
+ }
 
-console.log(calculate(10, 10, multiply))
+
+// const calculate = (num1, num2, callback) => {  
+ 
+//   return callback(num1, num2)
+// }
+
+// console.log(calculate(10, 10, multiply))
+
+
 
 // UNCOMMENT THE FUNCTION CALL BELOW
 // RUN THIS FILE WITH NODE
 // CHECK YOUR ANSWER
 
-multiply(4, 3, (answer) => 
-{
-  console.log('The answer is ' + answer) //shouldconsole.log 12
-})
+const consoleLogAnswer = (solution) => {
+  console.log('The answer is ' + solution) //shouldconsole.log 12
+}
+
+
+multiply(4, 3, consoleLogAnswer) // Send off api call to keep track of the answer
+
+multiply(10, 20, (answer) => { console.log("I'm different but my answer is " + answer)}) // change the color of text based off of the answer
 
 ////////// PROBLEMS 2 - 6 //////////
 
@@ -38,14 +51,21 @@ var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan']
 */
 
 // CODE HERE 
-const first = (arr, callbackName) => callbackName(arr[0])
+
+
+
+const first = (names, callback) => callback(names[0])
 
 // UNCOMMENT THE FUNCTION CALL BELOW
 // RUN THIS FILE WITH NODE
 // CHECK YOUR ANSWER
 
-first(names, firstName => {
+first(names, (firstName) => {
   console.log('The first name in names is ' + firstName)
+})
+
+first(["Mariah", "Maddie", "Noah"], (firstName) => {
+  console.log("The first child born was "+ firstName)
 })
 
 
@@ -58,7 +78,7 @@ first(names, firstName => {
 */
 
 // CODE HERE
-const last = (arr, lastName) => lastName(arr[6])
+const last = (arr, cb) => cb(arr[arr.length - 1])
 
 // UNCOMMENT THE FUNCTION CALL BELOW
 // RUN THIS FILE WITH NODE
@@ -82,7 +102,7 @@ last(names, lastName => {
 // CODE HERE 
 const contains = (arr, name, result) => 
 {
-  if (result === true)
+  if (arr.includes(name) === true)
   {
   return(true)
   }
